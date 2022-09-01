@@ -3,6 +3,7 @@ const app = express();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const bodyParser = require('body-parser');
+const auth = require('./auth');
 
 // body parser configuration
 app.use(bodyParser.json());
@@ -12,6 +13,19 @@ const dbConnect = require("./db/dbConnect");
 const User = require("./db/userModel")
 
 dbConnect();
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+    );
+    next();
+  });
 
 //register endpoint 
 app.post('/register', (req,res) => {
@@ -98,7 +112,7 @@ app.get("/free-endpoint", (request, response) => {
   });
   
   // authentication endpoint
-  app.get("/auth-endpoint", (request, response) => {
+  app.get("/auth-endpoint", auth, (request, response) => {
     response.json({ message: "You are authorized to access me" });
   });
   
