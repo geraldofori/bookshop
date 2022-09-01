@@ -1,4 +1,6 @@
 const express = require("express");
+const bcrypt = require("bcrypt");
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -9,6 +11,7 @@ app.get('/', (req, res) => {
   });
 
 const dbConnect = require("./db/dbConnect");
+const User = require("./db/userModel")
 
 dbConnect();
 
