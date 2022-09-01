@@ -1,20 +1,48 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
+const http = require('http');
+const app = require('./app');
 
+const normalizePort = val => {
+  const port = parseInt(val, 10);
 
-const PORT = process.env.PORT || 3001;
+  if (isNaN(port)) {
+    return val;
+  }
+  if (port >= 0) {
+    return port;
+  }
+  return false;
+};
 
-const app = express();
+const port = normalizePort(process.env.PORT || '3001');
+app.set('port', port);
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-  });
+const errorHandler = error => {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+  const address = server.address();
+  const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port;
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges.');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use.');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+};
 
-const dbConnect = require("./db/dbConnect");
-const User = require("./db/userModel")
+const server = http.createServer(app);
 
-dbConnect();
-
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
+server.on('error', errorHandler);
+server.on('listening', () => {
+  const address = server.address();
+  const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
+  console.log('Listening on ' + bind);
 });
+
+server.listen(port);

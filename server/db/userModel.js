@@ -8,9 +8,9 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, "Please provide an password"],
-        unique: [false]
-    }
+        required: [true, "Please provide a password!"],
+        unique: false,
+      }
 })
 
 module.exports = mongoose.model.Users || mongoose.model("Users", UserSchema);
