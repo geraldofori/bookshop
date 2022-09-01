@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const bodyParser = require('body-parser');
 
 // body parser configuration
@@ -45,5 +46,61 @@ app.post('/register', (req,res) => {
   });
 
 });
+
+//login endpoint 
+app.post('/login',(req, res) => {
+    User.findOne({email: req.body.email})
+    .then((user) => {
+        bcrypt.compare(req.body.password, user.password)
+        .then((passwordCheck) => {
+            if(!passwordCheck){
+                return res.status(400).send({
+                    message: "Passwords do not match",
+                    error
+                });
+            }
+
+            const token = jwt.sign(
+                {
+                    userId: user._id,
+                    userEmail: user.email
+                },
+                "RANDOM-TOKEN",
+                {expiresIn: "24h"}
+            );
+
+            return res.status(200).send({
+                message: "Login Successfull!",
+                email: user.email,
+                token
+            });
+        })
+        .catch((e)=> {
+            res.status(400).send({
+                message: "Passwords do not match",
+                e
+            })
+        })
+    })
+    .catch((e)=> {
+        res.status(404).send({
+            message: "Email not found",
+            e,
+          });
+
+    });
+
+});
+
+// free endpoint
+app.get("/free-endpoint", (request, response) => {
+    response.json({ message: "You are free to access me anytime" });
+  });
+  
+  // authentication endpoint
+  app.get("/auth-endpoint", (request, response) => {
+    response.json({ message: "You are authorized to access me" });
+  });
+  
 
 module.exports = app;
