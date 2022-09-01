@@ -8,7 +8,9 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
   });
 
-  
+const dbConnect = require("./db/dbConnect");
+
+dbConnect();
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
