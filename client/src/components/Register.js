@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 function Copyright(props) {
   return (
@@ -32,11 +33,22 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const data = new FormData(e.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
+    const configuration = {
+      method: "post",
+      url: "http://localhost:3001/register",
+      data: {
+        email,
+        password
+      }
+    };
+
+    axios(configuration)
+    .then((result)=> {
+      setRegister(true);
+    })
+    .catch((error)=> {
+      error = new Error();
+    })
   };
 
   return (
@@ -83,6 +95,13 @@ export default function Register() {
                   id="password"
                   autoComplete="new-password"
                 />
+              </Grid>
+              <Grid item xs={12}>
+              {register ? (
+                <Typography align='center' color='green'>You Are Registered Successfully</Typography>
+              ) : (
+                <Typography align='center' color="red">You Are Not Registered</Typography>
+              )}
               </Grid>
             </Grid>
             <Button
