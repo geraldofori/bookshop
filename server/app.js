@@ -117,4 +117,20 @@ app.get("/free-endpoint", (request, response) => {
   });
   
 
+// SERVE SETUP
+  const normalizePort = val => {
+    const port = parseInt(val, 10);
+  
+    if (isNaN(port)) {
+      return val;
+    }
+    if (port >= 0) {
+      return port;
+    }
+    return false;
+  };
+  
+  const port = normalizePort(process.env.PORT || '3001');
+  app.set('port', port);
+
 module.exports = app;

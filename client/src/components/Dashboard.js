@@ -1,4 +1,4 @@
-import { Grid, Paper } from '@mui/material';
+import { Grid, Paper, Tooltip } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import React from 'react';
 import Header from './Header'
@@ -9,8 +9,8 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import Passion from '../assets/the_passion_within.jpg'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const Dashboard = () => {
 
@@ -35,8 +35,8 @@ const Dashboard = () => {
           </Grid>
         </Grid>
 
-        <Grid container rowSpacing={4} spacing={2} sx={{pt: 1, px: 3}}>
-          <Grid item xs={3}>
+        <Grid container rowSpacing={4} spacing={2} sx={{pt: 1, px: 10}}>
+          <Grid item xs={2}>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
@@ -45,219 +45,23 @@ const Dashboard = () => {
                 alt="Paella dish"
               />
               <CardContent>
+                <Typography>Title</Typography> 
                 <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal to cook
-                  together with your guests. Add 1 cup of frozen peas along with the mussels,
-                  if you like.
+                  Author
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="194"
-                image={Passion}
-                alt="Paella dish"
-              />
-              <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal to cook
-                  together with your guests. Add 1 cup of frozen peas along with the mussels,
-                  if you like.
-                </Typography>
-              </CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="194"
-                image={Passion}
-                alt="Paella dish"
-              />
-              <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal to cook
-                  together with your guests. Add 1 cup of frozen peas along with the mussels,
-                  if you like.
-                </Typography>
-              </CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="194"
-                image={Passion}
-                alt="Paella dish"
-              />
-              <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal to cook
-                  together with your guests. Add 1 cup of frozen peas along with the mussels,
-                  if you like.
-                </Typography>
-              </CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="194"
-                image={Passion}
-                alt="Paella dish"
-              />
-              <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal to cook
-                  together with your guests. Add 1 cup of frozen peas along with the mussels,
-                  if you like.
-                </Typography>
-              </CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="194"
-                image={Passion}
-                alt="Paella dish"
-              />
-              <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal to cook
-                  together with your guests. Add 1 cup of frozen peas along with the mussels,
-                  if you like.
-                </Typography>
-              </CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="194"
-                image={Passion}
-                alt="Paella dish"
-              />
-              <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal to cook
-                  together with your guests. Add 1 cup of frozen peas along with the mussels,
-                  if you like.
-                </Typography>
-              </CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="194"
-                image={Passion}
-                alt="Paella dish"
-              />
-              <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal to cook
-                  together with your guests. Add 1 cup of frozen peas along with the mussels,
-                  if you like.
-                </Typography>
-              </CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="194"
-                image={Passion}
-                alt="Paella dish"
-              />
-              <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal to cook
-                  together with your guests. Add 1 cup of frozen peas along with the mussels,
-                  if you like.
-                </Typography>
-              </CardContent>
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
+                <Tooltip title='Add to wishlist'>
+                  <IconButton aria-label="add to favorites">
+                    <FavoriteIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title='Add to Cart'>
+                  <IconButton aria-label="add to cart">
+                    <AddShoppingCartIcon/>
+                  </IconButton>
+                </Tooltip>
+                <Typography mx={2}>$20.00</Typography>
               </CardActions>
             </Card>
           </Grid>
