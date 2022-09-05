@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const dbConnect = require("./db/dbConnect");
-const User = require("./db/userModel")
+const User = require("./db/models/userModel")
 
 dbConnect();
 
