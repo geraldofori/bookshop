@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const dbConnect = require("./db/dbConnect");
-const User = require("./db/models/userModel")
+const Customer = require("./db/models/customer");
 
 dbConnect();
 
@@ -32,20 +32,20 @@ app.post('/register', (req,res) => {
   bcrypt
   .hash(req.body.password, 10)
   .then((hashedPassword) => {
-    const user = new User({
+    const customer = new Customer({
       email: req.body.email,
       password: hashedPassword
     });
 
-    user.save().then((result) => {
+    customer.save().then((result) => {
       res.status(201).send({
-        message: "User Created Successfully",
+        message: "Customer created Successfully",
         result,
       });
     })
     .catch((error) => {
       res.status(500).send({
-        message: "Error creating user",
+        message: "Error creating customer",
         error,
       });
     });
@@ -63,7 +63,7 @@ app.post('/register', (req,res) => {
 
 //login endpoint 
 app.post('/login',(req, res) => {
-    User.findOne({email: req.body.email})
+    Customer.findOne({email: req.body.email})
     .then((user) => {
         bcrypt.compare(req.body.password, user.password)
         .then((passwordCheck) => {
@@ -76,8 +76,8 @@ app.post('/login',(req, res) => {
 
             const token = jwt.sign(
                 {
-                    userId: user._id,
-                    userEmail: user.email
+                    customer_id: customer._id,
+                    customer_email: customer.email
                 },
                 "RANDOM-TOKEN",
                 {expiresIn: "24h"}
@@ -85,7 +85,7 @@ app.post('/login',(req, res) => {
 
             return res.status(200).send({
                 message: "Login Successfull!",
-                email: user.email,
+                email: customer.email,
                 token
             });
         })

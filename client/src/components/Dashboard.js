@@ -1,5 +1,4 @@
-import { Grid, Paper, Tooltip } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Grid,Tooltip } from '@mui/material';
 import React from 'react';
 import Header from './Header'
 import Card from '@mui/material/Card';
@@ -11,27 +10,23 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Passion from '../assets/the_passion_within.jpg'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import DashboardImg from '../assets/books_dashboard.jpg'
+
 
 const Dashboard = () => {
-
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
 
 
   return (
     <div>
         <Header/>
-        <Grid container rowSpacing={4} spacing={2} sx={{pt: 1, px: 3}}>
-          <Grid item xs={8}>
-            <Item>xs=8</Item>
-          </Grid>
-          <Grid item xs={4}>
-            <Item>xs=4</Item>
+        <Grid container rowSpacing={4} spacing={2} sx={{pt: 0}}>
+          <Grid item xs={12}>
+          <CardMedia
+                component="img"
+                height="400"
+                image={DashboardImg}
+                alt="Dashboard"
+              />
           </Grid>
         </Grid>
 
