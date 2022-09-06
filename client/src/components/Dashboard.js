@@ -19,7 +19,7 @@ const Dashboard = () => {
   return (
     <div>
         <Header/>
-        <Grid container rowSpacing={4} spacing={2} sx={{pt: 0}}>
+        <Grid container rowSpacing={4} sx={{pt: 0}}>
           <Grid item xs={12}>
           <CardMedia
                 component="img"
