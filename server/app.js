@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const bodyParser = require('body-parser');
 const auth = require('./auth');
+const routes = require('./routes/routes');
 
 // body parser configuration
 app.use(bodyParser.json());
@@ -13,6 +14,8 @@ const dbConnect = require("./db/dbConnect");
 const Customer = require("./db/models/customer");
 
 dbConnect();
+
+app.use('/api', routes);
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
