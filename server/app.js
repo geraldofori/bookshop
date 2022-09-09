@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const dbConnect = require("./db/dbConnect");
-const Customer = require("./db/models/customer");
+const Customer = require("./models/customer");
 
 dbConnect();
 
