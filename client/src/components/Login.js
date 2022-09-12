@@ -117,7 +117,7 @@ export default function Login() {
               {login ? (
                 <Typography align='center' color='green'>You Are Logged In Successfully</Typography>
               ) : (
-                <Typography align='center' color="red">You Are Not Logged In</Typography>
+                <Typography align='center' color="red"></Typography>
               )}
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
